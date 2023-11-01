@@ -14,18 +14,16 @@
                     <div class="card-header pb-0">
                         <div class="d-flex flex-row justify-content-between">
                             <div>
-                                <h5 class="mb-0">Todos los usuarios</h5>
+                                <h5 class="mb-0">Roles</h5>
                             </div>
                             <div>
-                                <a href="{{ route('user.roles.index') }}" class="btn bg-gradient-primary btn-sm mb-0"
-                                    type="button">Roles</a>
-                                <a href="#" class="btn bg-gradient-success btn-sm mb-0" type="button">+&nbsp; Nuevo
-                                    Usuario</a>
+                                <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Nuevo
+                                    Rol</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body p-3">
-                        <livewire:users.user-table />
+
                     </div>
                 </div>
             </div>
