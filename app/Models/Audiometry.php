@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Audiometry extends Model
 {
     use HasFactory;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function itemAudiometries()
+    {
+        return $this->hasMany(ItemAudiometry::class, 'audiometry_id');
+    }
 }

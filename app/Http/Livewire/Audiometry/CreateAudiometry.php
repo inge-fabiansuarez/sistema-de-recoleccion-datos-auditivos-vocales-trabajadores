@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire\Audiometry;
 
+use App\Models\Audiometry;
+use App\Models\User;
 use Livewire\Component;
 
 class CreateAudiometry extends Component
 {
-
+    public Audiometry $audiometry;
 
     public $dataRigth = [0, 0, 0, 0, 0, 0, 0];
     public $dataLeft = [0, 0, 0, 0, 0, 0, 0];
@@ -14,6 +16,16 @@ class CreateAudiometry extends Component
     public $frequency;
     public $listEjeX = ['125', '250', '500', '1000', '2000', '4000', '8000'];
 
+    protected $rules = [
+        'audiometry.exam_date' => 'required',
+        'audiometry.left_diagnosis' => 'required',
+        'audiometry.right_diagnosis' => 'required',
+        'audiometry.observation' => 'required',
+    ];
+
+    public function mount(){
+        $this->audiometry = new Audiometry();
+    }
     protected $listeners = [
         'addOtherEjeX',
         'updatedListEjeX',
@@ -22,7 +34,8 @@ class CreateAudiometry extends Component
 
     public function render()
     {
-        return view('livewire.audiometry.create-audiometry');
+        $users = User::all();
+        return view('livewire.audiometry.create-audiometry', compact('users'));
     }
 
     public function addOtherEjeX()
@@ -59,5 +72,13 @@ class CreateAudiometry extends Component
 
             $this->emit('listEjeXUpdated', $this->listEjeX, $this->dataRigth, $this->dataLeft);
         }
+    }
+
+    public function save(){
+
+        $this->validate();
+
+        $this->audiometry->save();
+
     }
 }

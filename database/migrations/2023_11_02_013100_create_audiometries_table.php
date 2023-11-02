@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('audiometries', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('exam_date');
+            $table->text('left_diagnosis');
+            $table->text('right_diagnosis');
+            $table->text('observation', 45);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
