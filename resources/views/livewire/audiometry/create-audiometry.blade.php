@@ -10,20 +10,28 @@
                         <div class="d-flex flex-column">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Seleccionar empleado</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select wire:model="audiometry.user_id" class="form-control"
+                                    id="exampleFormControlSelect1">
+                                    <option value="">--- Seleccionar ---</option>
                                     @foreach ($users as $index => $user)
                                         <option value="{{ $user->id }}">{{ $user->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('audiometry.user_id')
+                                    <span class="text-danger text-xs text-message-validation">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
                             </div>
-                            <h6 class="mb-3 text-sm">Oliver Liam</h6>
-                            <span class="mb-2 text-xs">Company Name: <span
-                                    class="text-dark font-weight-bold ms-sm-2">Viking
-                                    Burrito</span></span>
-                            <span class="mb-2 text-xs">Email Address: <span
-                                    class="text-dark ms-sm-2 font-weight-bold">oliver@burrito.com</span></span>
-                            <span class="text-xs">VAT Number: <span
-                                    class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+                            <h6 class="mb-3 text-sm">{{ $userAudiometry->name }}</h6>
+                            <span class="mb-2 text-xs">Email: <span
+                                    class="text-dark font-weight-bold ms-sm-2">{{ $userAudiometry->email }}</span></span>
+                            <span class="mb-2 text-xs">Celular: <span
+                                    class="text-dark ms-sm-2 font-weight-bold">{{ $userAudiometry->phone }}</span></span>
+                            <span class="mb-2 text-xs">Ubicación: <span
+                                    class="text-dark ms-sm-2 font-weight-bold">{{ $userAudiometry->location }}</span></span>
+                            <span class="mb-2 text-xs">Sobre: <span
+                                    class="text-dark ms-sm-2 font-weight-bold">{{ $userAudiometry->about_me }}</span></span>
                             <br>
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Fecha del examen</label>

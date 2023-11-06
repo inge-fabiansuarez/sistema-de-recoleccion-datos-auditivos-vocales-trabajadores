@@ -10,6 +10,8 @@ class CreateAudiometry extends Component
 {
     public Audiometry $audiometry;
 
+    public User $userAudiometry;
+
     public $dataRigth = [0, 0, 0, 0, 0, 0, 0];
     public $dataLeft = [0, 0, 0, 0, 0, 0, 0];
 
@@ -21,10 +23,13 @@ class CreateAudiometry extends Component
         'audiometry.left_diagnosis' => 'required',
         'audiometry.right_diagnosis' => 'required',
         'audiometry.observation' => 'required',
+        'audiometry.user_id' => 'required',
     ];
 
-    public function mount(){
+    public function mount()
+    {
         $this->audiometry = new Audiometry();
+        $this->userAudiometry = new User();
     }
     protected $listeners = [
         'addOtherEjeX',
@@ -74,11 +79,16 @@ class CreateAudiometry extends Component
         }
     }
 
-    public function save(){
+    public function save()
+    {
 
         $this->validate();
 
         $this->audiometry->save();
+    }
 
+    public function updatedAudiometryUserId($newValue)
+    {
+        $this->userAudiometry = User::find($newValue);
     }
 }

@@ -9,6 +9,18 @@ class ItemAudiometry extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'frecuency',
+        'left_hertz',
+        'right_hertz'
+    ];
+
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+    }
+
     public function audiometry()
     {
         return $this->belongsTo(Audiometry::class, 'audiometry_id');
