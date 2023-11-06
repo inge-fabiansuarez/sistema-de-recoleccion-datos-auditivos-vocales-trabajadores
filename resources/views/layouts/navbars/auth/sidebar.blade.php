@@ -37,9 +37,9 @@
                     <span class="nav-link-text ms-1">Inicio</span>
                 </a>
             </li>
-            <li class="nav-item mt-2">
+            {{-- <li class="nav-item mt-2">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Laravel Examples</h6>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('user-profile') ? 'active' : '' }} " href="{{ url('user-profile') }}">
                     <div
@@ -71,8 +71,7 @@
                 </a>
             </li>
             <li class="nav-item pb-2">
-                <a class="nav-link {{ Request::is('users*') ? 'active' : '' }}"
-                    href="{{ route('user.index') }}">
+                <a class="nav-link {{ Request::is('users*') ? 'active' : '' }}" href="{{ route('user.index') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;"
@@ -83,10 +82,11 @@
                 </a>
             </li>
             <li class="nav-item mt-2">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Example pages</h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Ingresar Examenes</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('tables') ? 'active' : '' }}" href="{{ url('tables') }}">
+                <a class="nav-link {{ Request::is('audiometry*') ? 'active' : '' }}"
+                    href="{{ route('audiometry.create') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -108,7 +108,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Tables</span>
+                    <span class="nav-link-text ms-1">Audiometrías</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -135,10 +135,10 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Billing</span>
+                    <span class="nav-link-text ms-1">Examen Auditivo</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link {{ Request::is('virtual-reality') ? 'active' : '' }}"
                     href="{{ url('virtual-reality') }}">
                     <div
@@ -297,7 +297,7 @@
                     class="btn btn-primary btn-md active px-5 text-white" target="_blank" role="button"
                     aria-pressed="true">
                     Upgrade to PRO</a>
-            </li>
+            </li> --}}
         </ul>
     </div>
     <div class="sidenav-footer mx-3 ">

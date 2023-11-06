@@ -12,7 +12,8 @@ class ItemAudiometry extends Model
     protected $fillable = [
         'frecuency',
         'left_hertz',
-        'right_hertz'
+        'right_hertz',
+        'audiometry_id'
     ];
 
 

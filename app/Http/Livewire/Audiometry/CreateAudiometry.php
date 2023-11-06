@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Audiometry;
 
 use App\Models\Audiometry;
+use App\Models\ItemAudiometry;
 use App\Models\User;
 use Livewire\Component;
 
@@ -81,10 +82,17 @@ class CreateAudiometry extends Component
 
     public function save()
     {
-
         $this->validate();
-
         $this->audiometry->save();
+
+        foreach ($this->listEjeX as $index => $item) {
+            $newItem = new ItemAudiometry();
+            $newItem->frecuency = $item;
+            $newItem->left_hertz = $this->dataLeft[$index];
+            $newItem->right_hertz = $this->dataRigth[$index];
+            $newItem->audiometry_id = $this->audiometry->id; // Asigna el ID de la audiometría
+            $newItem->save();
+        }
     }
 
     public function updatedAudiometryUserId($newValue)

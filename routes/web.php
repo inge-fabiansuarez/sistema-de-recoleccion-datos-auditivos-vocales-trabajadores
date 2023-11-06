@@ -68,7 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('dashboard');
     })->name('sign-up');
 
-    Route::get('/audiometry/create', [AudiometryController::class, 'create']);
+    Route::get('audiometry/create', [AudiometryController::class, 'create'])->name('audiometry.create');
 
     //USUARIOS
     Route::get('users/create', [RegisterController::class, 'create'])->name('user.create');
@@ -83,7 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //ROLES
     Route::resource('roles', RoleController::class)->names('user.roles');
-    Route::get('/user-profile', [InfoUserController::class, 'create']);
+    Route::get('/user-profile', [InfoUserController::class, 'create'])->name('userprofil.index');
     Route::post('/user-profile', [InfoUserController::class, 'store'])->name('userprofil.store');
 });
 

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('item_audiometry', function (Blueprint $table) {
+        Schema::create('item_audiometries', function (Blueprint $table) {
             $table->id();
             $table->integer('frecuency');
             $table->integer('left_hertz');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_audiometry');
+        Schema::dropIfExists('item_audiometries');
     }
 };
