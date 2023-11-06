@@ -9,7 +9,7 @@
                         <div class="row gx-4">
                             <div class="col-auto">
                                 <div class="avatar avatar-xl position-relative">
-                                    <img src="../assets/img/bruce-mars.jpg" alt="..."
+                                    <img src="{{ asset('/assets/img/bruce-mars.jpg') }}" alt="..."
                                         class="w-100 border-radius-lg shadow-sm">
                                     <a href="javascript:;"
                                         class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
@@ -21,11 +21,12 @@
                             <div class="col-auto my-auto">
                                 <div class="h-100">
                                     <h5 class="mb-1">
-                                        {{ auth()->user()->name }}
+                                        {{ $user->name }}
                                     </h5>
                                     <p class="mb-0 font-weight-bold text-sm">
-                                        {{ auth()->user()->about_me }}
+                                        {{ $user->about_me }}
                                     </p>
+
                                 </div>
                             </div>
                         </div>
@@ -33,7 +34,7 @@
                     <h6 class="mt-5">Información de Perfil</h6>
                 </div>
                 <div class="card-body pt-4 p-3">
-                    <form action="{{ route('userprofil.store') }}" method="POST" role="form text-left">
+                    <form action="{{ route('user.update', $user) }}" method="POST" role="form text-left">
                         @csrf
                         @if ($errors->any())
                             <div class="mt-3  alert alert-primary alert-dismissible fade show" role="alert">
@@ -59,7 +60,7 @@
                                 <div class="form-group">
                                     <label for="user-name" class="form-control-label">{{ __('Full Name') }}</label>
                                     <div class="@error('user.name')border border-danger rounded-3 @enderror">
-                                        <input class="form-control" value="{{ auth()->user()->name }}" type="text"
+                                        <input class="form-control" value="{{ $user->name }}" type="text"
                                             placeholder="Name" id="user-name" name="name">
                                         @error('name')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
@@ -71,7 +72,7 @@
                                 <div class="form-group">
                                     <label for="user-email" class="form-control-label">{{ __('Email') }}</label>
                                     <div class="@error('email')border border-danger rounded-3 @enderror">
-                                        <input class="form-control" value="{{ auth()->user()->email }}" type="email"
+                                        <input class="form-control" value="{{ $user->email }}" type="email"
                                             placeholder="@example.com" id="user-email" name="email">
                                         @error('email')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
@@ -86,7 +87,7 @@
                                     <label for="user.phone" class="form-control-label">{{ __('Phone') }}</label>
                                     <div class="@error('user.phone')border border-danger rounded-3 @enderror">
                                         <input class="form-control" type="tel" placeholder="40770888444" id="number"
-                                            name="phone" value="{{ auth()->user()->phone }}">
+                                            name="phone" value="{{ $user->phone }}">
                                         @error('phone')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
@@ -98,7 +99,7 @@
                                     <label for="user.location" class="form-control-label">{{ __('Location') }}</label>
                                     <div class="@error('user.location') border border-danger rounded-3 @enderror">
                                         <input class="form-control" type="text" placeholder="Location" id="name"
-                                            name="location" value="{{ auth()->user()->location }}">
+                                            name="location" value="{{ $user->location }}">
                                     </div>
                                 </div>
                             </div>
@@ -107,8 +108,22 @@
                             <label for="about">{{ 'About Me' }}</label>
                             <div class="@error('user.about')border border-danger rounded-3 @enderror">
                                 <textarea class="form-control" id="about" rows="3" placeholder="Say something about yourself"
-                                    name="about_me">{{ auth()->user()->about_me }}</textarea>
+                                    name="about_me">{{ $user->about_me }}</textarea>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Rol del usuario: </label>
+
+                            @foreach ($roles as $role)
+                                <div class="form-check form-switch">
+                                    <input name="roles[]" value="{{ $role->name }}" class="form-check-input"
+                                        type="checkbox" id="flexSwitchCheckDefault"
+                                        @if ($user->hasRole($role->name)) checked @endif>
+                                    <label class="form-check-label"
+                                        for="flexSwitchCheckDefault">{{ $role->name }}</label>
+
+                                </div>
+                            @endforeach
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4">Guardar cambios</button>

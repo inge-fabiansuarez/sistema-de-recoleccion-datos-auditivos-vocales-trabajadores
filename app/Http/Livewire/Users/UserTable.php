@@ -20,6 +20,18 @@ class UserTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->sortable(),
+            Column::make('Rol')
+                ->label(
+                    function ($row, Column $column) {
+                        //$route =  route('admin.preoperacional.moto.imprimir.descargar', $row);
+                        $linea = "";
+                        foreach ($row->getRoleNames() as $roleName) {
+                            $linea .= $roleName;
+                        }
+                        echo $linea;
+                    }
+                )
+                ->html(),
             Column::make("Nombre", "name")
                 ->sortable(),
             Column::make("Email", "email")
@@ -34,6 +46,19 @@ class UserTable extends DataTableComponent
                 ->sortable(),
             Column::make("Actualizadó en", "updated_at")
                 ->sortable(),
+            Column::make('')
+                ->label(
+                    function ($row, Column $column) {
+                        //$route =  route('admin.preoperacional.moto.imprimir.descargar', $row);
+                        $route = route('user.edit', $row);
+                        $route1 = route('user.destroy', $row);
+                        echo "
+                        <a href='$route' class='btn bg-gradient-info btn-sm mb-0' type='button'>Editar</a>
+                        <a href='$route1' class='btn bg-gradient-danger btn-sm mb-0' type='button'>Eliminar</a>
+                    ";
+                    }
+                )
+                ->html(),
         ];
     }
 }
