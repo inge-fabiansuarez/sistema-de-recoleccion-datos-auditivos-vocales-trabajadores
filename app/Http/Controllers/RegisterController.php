@@ -11,6 +11,8 @@ class RegisterController extends Controller
 {
     public function create()
     {
+
+        //dd("HIOS");
         return view('session.register');
     }
 
@@ -20,15 +22,16 @@ class RegisterController extends Controller
             'name' => ['required', 'max:50'],
             'email' => ['required', 'email', 'max:50', Rule::unique('users', 'email')],
             'password' => ['required', 'min:5', 'max:20'],
-            'agreement' => ['accepted']
+            'agreement' => ['accepted'],
+            'phone' => ['required'],
+            'location' => ['required'],
+            'about_me' => ['required'],
         ]);
-        $attributes['password'] = bcrypt($attributes['password'] );
+        $attributes['password'] = bcrypt($attributes['password']);
 
-        
-
-        session()->flash('success', 'Your account has been created.');
+        //session()->flash('success', 'Your account has been created.');
         $user = User::create($attributes);
-        Auth::login($user); 
-        return redirect('/dashboard');
+        //Auth::login($user);
+        return redirect()->to('user.index');
     }
 }

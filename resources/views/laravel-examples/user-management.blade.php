@@ -19,7 +19,7 @@
                             <div>
                                 <a href="{{ route('user.roles.index') }}" class="btn bg-gradient-primary btn-sm mb-0"
                                     type="button">Roles</a>
-                                <a href="#" class="btn bg-gradient-success btn-sm mb-0" type="button">+&nbsp; Nuevo
+                                <a href="{{route('user.create')}}" class="btn bg-gradient-success btn-sm mb-0" type="button">+&nbsp; Nuevo
                                     Usuario</a>
                             </div>
                         </div>

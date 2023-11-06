@@ -20,19 +20,19 @@ class UserTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->sortable(),
-            Column::make("Name", "name")
+            Column::make("Nombre", "name")
                 ->sortable(),
             Column::make("Email", "email")
                 ->sortable(),
-            Column::make("Phone", "phone")
+            Column::make("Telefono", "phone")
                 ->sortable(),
-            Column::make("Location", "location")
+            Column::make("Dirección", "location")
                 ->sortable(),
-            Column::make("About me", "about_me")
+            Column::make("Perfil", "about_me")
                 ->sortable(),
-            Column::make("Created at", "created_at")
+            Column::make("Fecha Creación", "created_at")
                 ->sortable(),
-            Column::make("Updated at", "updated_at")
+            Column::make("Actualizadó en", "updated_at")
                 ->sortable(),
         ];
     }

@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/', [HomeController::class, 'home']);
+    Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -44,9 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('rtl');
     })->name('rtl');
 
-    Route::get('user-management', function () {
-        return view('laravel-examples/user-management');
-    })->name('user-management');
+
 
     Route::get('tables', function () {
         return view('tables');
@@ -65,15 +63,23 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('sign-up');
 
     Route::get('/logout', [SessionsController::class, 'destroy']);
-    Route::get('/user-profile', [InfoUserController::class, 'create']);
-    Route::post('/user-profile', [InfoUserController::class, 'store']);
+
     Route::get('/login', function () {
         return view('dashboard');
     })->name('sign-up');
 
 
-    Route::resource('roles', RoleController::class)->names('user.roles');
+
     Route::get('/audiometry/create', [AudiometryController::class, 'create']);
+
+    Route::get('users/create', [RegisterController::class, 'create'])->name('user.create');
+    Route::post('users/create', [RegisterController::class, 'store'])->name('user.store');
+    Route::get('users', function () {
+        return view('laravel-examples/user-management');
+    })->name('user.index');
+    Route::resource('roles', RoleController::class)->names('user.roles');
+    Route::get('/user-profile', [InfoUserController::class, 'create']);
+    Route::post('/user-profile', [InfoUserController::class, 'store'])->name('userprofil.store');
 });
 
 
