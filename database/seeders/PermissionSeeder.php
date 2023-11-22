@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class PermissionSeeder extends Seeder
 {
@@ -15,17 +17,14 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create([
+        $superAdmin = User::find(1);
+        $role = Role::create([
+            'name' => 'SuperAdmin'
+        ]);
+        $permisionUsers = Permission::create([
             'name' => 'users',
             'description' => 'Gestionar Usuarios y Roles de la aplicación'
         ]);
-        Permission::create([
-            'name' => 'Permiso 1',
-            'description' => 'Gestionar Usuarios y Roles de la aplicación'
-        ]);
-        Permission::create([
-            'name' => 'Permiso 2',
-            'description' => 'Gestionar Usuarios y Roles de la aplicación'
-        ]);
+        $superAdmin->assignRole($role);
     }
 }

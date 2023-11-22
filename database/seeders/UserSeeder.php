@@ -17,11 +17,15 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'id' => 1,
-            'name' => 'admin',
-            'email' => 'admin@softui.com',
+            'name' => 'Eliana Yorely Galvis Gonzales',
+            'email' => 'fonoeliana22@gmail.com',
             'password' => Hash::make('secret'),
+            'phone' => '3229243184',
+            'location' => 'Calle 10 # 21-67 apt 602',
+            'about_me' => 'Fonoaudiologa',
             'created_at' => now(),
             'updated_at' => now()
+
         ]);
     }
 }
