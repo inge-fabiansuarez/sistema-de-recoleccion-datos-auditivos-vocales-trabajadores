@@ -1,5 +1,5 @@
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
-    style="height: calc(100vh - 0px) !important; "  id="sidenav-main">
+    style="height: calc(100vh - 0px) !important; " id="sidenav-main">
 
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
@@ -82,6 +82,7 @@
                     <span class="nav-link-text ms-1">Gestión de empleados</span>
                 </a>
             </li>
+
             <li class="nav-item mt-2">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Ingresar Examenes</h6>
             </li>
@@ -94,7 +95,8 @@
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF"
+                                    fill-rule="nonzero">
                                     <g transform="translate(1716.000000, 291.000000)">
                                         <g id="office" transform="translate(153.000000, 2.000000)">
                                             <path class="color-background opacity-6"
@@ -301,7 +303,7 @@
             </li> --}}
         </ul>
     </div>
-   {{--  <div class="sidenav-footer mx-3 ">
+    {{--  <div class="sidenav-footer mx-3 ">
         <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
             <div class="full-background"
                 style="background-image: url('../assets/img/curved-images/white-curved.jpeg')"></div>

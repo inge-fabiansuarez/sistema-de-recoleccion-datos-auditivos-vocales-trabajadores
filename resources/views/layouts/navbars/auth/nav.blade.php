@@ -11,10 +11,39 @@
             <h6 class="font-weight-bolder mb-0 text-capitalize">Eliana Galvis <i class="fa fa-heart"></i></h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex justify-content-end" id="navbar">
-            <div class="nav-item d-flex align-self-end">
-                <a href="{{ route('audiometry.create') }}"
-                    class="btn btn-primary active mb-0 text-white" role="button" aria-pressed="true">
-                    Crear Audiometría
+
+            <div class="dropdown">
+                <button class="btn bg-gradient-success dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Medidas Vocales
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="{{ route('vocalpreventivas') }}">Medidas Preventivas</a></li>
+                    <li><a class="dropdown-item" href="{{ route('vocalcorrectivas') }}">Medidas Correctivas</a></li>
+                </ul>
+            </div>
+
+            <div class="dropdown m-2">
+                <button class="btn bg-gradient-info dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Medidas Auditivas
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="{{ route('auditivapreventivas') }}">Medidas Preventivas</a></li>
+                    <li><a class="dropdown-item" href="{{ route('auditivacorrectivas') }}">Medidas Correctivas</a></li>
+                </ul>
+            </div>
+            <div class="nav-item d-flex align-self-end m-2">
+                <a href="{{ route('audiometry.create') }}" class="btn btn-primary active mb-0 text-white" role="button"
+                    aria-pressed="true">
+                    Crear Examen auditivo
+                </a>
+            </div>
+
+            <div class="nav-item d-flex align-self-end m-2">
+                <a href="{{ route('vocalexams.index') }}" class="btn btn-primary active mb-0 text-white" role="button"
+                    aria-pressed="true">
+                    Crear Examen Vocal
                 </a>
             </div>
             <div class="ms-md-3 pe-md-3 d-flex align-items-center">

@@ -3,11 +3,13 @@
 use App\Http\Controllers\AudiometryController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MedidasController;
 use App\Http\Controllers\Users\InfoUserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\Users\RoleController;
+use App\Http\Controllers\VocalExamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -85,6 +87,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('roles', RoleController::class)->names('user.roles');
     Route::get('/user-profile', [InfoUserController::class, 'create'])->name('userprofil.index');
     Route::post('/user-profile', [InfoUserController::class, 'store'])->name('userprofil.store');
+
+    //examenes vocales
+    Route::get('/examen-vocal', [VocalExamController::class, 'index'])->name('vocalexams.index');
+
+    //medidas
+    Route::get('medidas/vocalpreventivas', [MedidasController::class, 'vocalPreventivas'])->name('vocalpreventivas');
+    Route::get('medidas/vocalcorrectivas', [MedidasController::class, 'vocalCorrectivas'])->name('vocalcorrectivas');
+    Route::get('medidas/auditivapreventivas', [MedidasController::class, 'auditivaPreventivas'])->name('auditivapreventivas');
+    Route::get('medidas/auditivacorrectivas', [MedidasController::class, 'auditivaCorrectivas'])->name('auditivacorrectivas');
 });
 
 
